@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import json
 import logging
 import re
+import time
 from datetime import datetime
 from typing import List, Dict, Optional
 from pathlib import Path
@@ -118,13 +119,15 @@ class WeddingHallCrawler:
             logger.info(f"페이지 {p} 크롤링 중... ({url})")
 
             try:
-                page.goto(url, wait_until="networkidle")
+                page.goto(url, wait_until="domcontentloaded", timeout=60000)
+                page.wait_for_selector("ul.archive_list-container", timeout=10000)
                 soup = self.get_soup(page)
             except Exception as e:
                 logger.warning(f"페이지 {p} 가져오기 실패: {e}")
                 continue
 
             facilities = self.parse_facilities(soup)
+            time.sleep(1)  # 요청 간 딜레이
             if not facilities:
                 logger.info(f"페이지 {p}에서 데이터가 없습니다")
                 continue
@@ -229,7 +232,9 @@ class WeddingHallCrawler:
         """예식장 페이지에서 _wpnonce 값 추출"""
         url = f"{self.base_url}/facilities/{facility_number}"
         try:
-            page.goto(url, wait_until="networkidle")
+            page.goto(url, wait_until="domcontentloaded", timeout=60000)
+            page.wait_for_selector("table", timeout=10000)  # 캘린더 테이블 대기
+            time.sleep(0.5)
             html = page.content()
             nonce_match = re.search(r'_wpnonce=([a-z0-9]+)', html)
             return nonce_match.group(1) if nonce_match else None
@@ -256,7 +261,9 @@ class WeddingHallCrawler:
                     logger.debug(f"  - {year}년 {month}월 크롤링...")
 
                     url = f"{self.base_url}/facilities/{facility_number}?to={year}-{month}&_wpnonce={wpnonce}"
-                    page.goto(url, wait_until="networkidle")
+                    page.goto(url, wait_until="domcontentloaded", timeout=60000)
+                    page.wait_for_selector("tbody", timeout=10000)
+                    time.sleep(0.5)  # 요청 간 딜레이
                     soup = self.get_soup(page)
 
                     reservations = self.parse_calendar(soup, facility_number, year, month)
