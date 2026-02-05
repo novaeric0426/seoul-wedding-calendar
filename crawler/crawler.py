@@ -29,7 +29,12 @@ class WeddingHallCrawler:
         self.json_path = Path(json_path)
         self.session = requests.Session()
         self.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
         })
 
         self.base_url = "https://wedding.seoulwomen.or.kr"
@@ -53,6 +58,13 @@ class WeddingHallCrawler:
         container = soup.select_one('ul.archive_list-container.facilities')
         if not container:
             logger.warning("예식장 컨테이너를 찾을 수 없습니다")
+            # 디버깅: 페이지 타이틀과 body 일부 출력
+            title = soup.find('title')
+            logger.warning(f"페이지 타이틀: {title.get_text() if title else 'N/A'}")
+            body = soup.find('body')
+            if body:
+                body_text = body.get_text()[:500]
+                logger.warning(f"페이지 내용 일부: {body_text}")
             return facilities
 
         # 모든 링크 추출
@@ -115,8 +127,12 @@ class WeddingHallCrawler:
 
         # 1~10페이지만 조회
         for page in range(1, 11):
-            url = f"{self.facilities_url}/page/{page}"
-            logger.info(f"페이지 {page} 크롤링 중...")
+            # 페이지 1은 /facilities, 나머지는 /facilities/page/N
+            if page == 1:
+                url = self.facilities_url
+            else:
+                url = f"{self.facilities_url}/page/{page}"
+            logger.info(f"페이지 {page} 크롤링 중... ({url})")
 
             soup = self.fetch_page(url)
             if not soup:
