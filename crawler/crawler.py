@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from playwright.sync_api import sync_playwright
+import requests
 from bs4 import BeautifulSoup
 import json
 import logging
@@ -23,16 +23,32 @@ logger = logging.getLogger(__name__)
 
 
 class WeddingHallCrawler:
-    """서울시 공공예식장 크롤러 (Playwright 버전)"""
+    """서울시 공공예식장 크롤러"""
 
     def __init__(self, json_path: str = "../frontend/public/data.json"):
         self.json_path = Path(json_path)
+        self.session = requests.Session()
+        self.session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+        })
+
         self.base_url = "https://wedding.seoulwomen.or.kr"
         self.facilities_url = f"{self.base_url}/facilities"
 
-    def get_soup(self, page) -> BeautifulSoup:
-        """현재 페이지의 HTML을 BeautifulSoup 객체로 반환"""
-        return BeautifulSoup(page.content(), 'lxml')
+    def fetch_page(self, url: str) -> Optional[BeautifulSoup]:
+        """페이지를 가져와서 BeautifulSoup 객체로 반환"""
+        try:
+            response = self.session.get(url, timeout=10)
+            response.raise_for_status()
+            return BeautifulSoup(response.content, 'lxml')
+        except requests.RequestException as e:
+            logger.error(f"페이지 요청 실패: {url}, 에러: {e}")
+            return None
 
     def parse_facilities(self, soup: BeautifulSoup) -> List[Dict]:
         """예식장 목록 파싱"""
@@ -104,29 +120,28 @@ class WeddingHallCrawler:
 
         return facilities
 
-    def get_all_facilities(self, page) -> List[Dict]:
+    def get_all_facilities(self) -> List[Dict]:
         """모든 페이지에서 예식장 목록 가져오기"""
         all_facilities = []
         seen_facility_numbers = set()
 
         # 1~10페이지만 조회
-        for p in range(1, 11):
-            if p == 1:
+        for page in range(1, 11):
+            # 페이지 1은 /facilities, 나머지는 /facilities/page/N
+            if page == 1:
                 url = self.facilities_url
             else:
-                url = f"{self.facilities_url}/page/{p}"
-            logger.info(f"페이지 {p} 크롤링 중... ({url})")
+                url = f"{self.facilities_url}/page/{page}"
+            logger.info(f"페이지 {page} 크롤링 중... ({url})")
 
-            try:
-                page.goto(url, wait_until="networkidle")
-                soup = self.get_soup(page)
-            except Exception as e:
-                logger.warning(f"페이지 {p} 가져오기 실패: {e}")
+            soup = self.fetch_page(url)
+            if not soup:
+                logger.warning(f"페이지 {page} 가져오기 실패")
                 continue
 
             facilities = self.parse_facilities(soup)
             if not facilities:
-                logger.info(f"페이지 {p}에서 데이터가 없습니다")
+                logger.info(f"페이지 {page}에서 데이터가 없습니다")
                 continue
 
             # 중복 제거
@@ -138,7 +153,7 @@ class WeddingHallCrawler:
                     all_facilities.append(facility)
                     new_count += 1
 
-            logger.info(f"페이지 {p}: {new_count}개 발견")
+            logger.info(f"페이지 {page}: {new_count}개 발견")
 
         return all_facilities
 
@@ -168,12 +183,16 @@ class WeddingHallCrawler:
         """캘린더에서 예약 정보 파싱"""
         reservations = []
 
+        # 첫 번째 tbody가 캘린더
         tbody = soup.find('tbody')
         if not tbody:
             logger.warning(f"캘린더를 찾을 수 없습니다: {facility_number}, {year}-{month}")
             return reservations
 
-        for td in tbody.find_all('td'):
+        # 모든 td 요소 탐색
+        tds = tbody.find_all('td')
+        for td in tds:
+            # 날짜 추출
             date_span = td.find('span', class_='text-grey600')
             if not date_span:
                 continue
@@ -185,36 +204,42 @@ class WeddingHallCrawler:
             day = int(day)
             reservation_date = f"{year}-{month:02d}-{day:02d}"
 
-            # flex flex-col span 찾기
+            # 예약 상태가 있는 span 찾기
             status_span = td.find('span', class_=lambda x: x and 'flex' in x and 'flex-col' in x)
             if not status_span:
                 continue
 
-            blocks = status_span.find_all('div', class_=lambda x: x and 'inline-block' in x and 'text-center' in x)
-            if not blocks:
+            # 그 안의 div들만 확인
+            status_divs = status_span.find_all('div', class_=lambda x: x and 'inline-block' in x and 'text-center' in x)
+            if not status_divs:
                 continue
 
+            # div 순서대로 시간대 할당 (첫 번째 div = L, 두 번째 div = D)
             time_slots = ['L', 'D']
 
-            for idx, block in enumerate(blocks):
-                text = block.get_text(strip=True)
+            for idx, div in enumerate(status_divs):
+                text = div.get_text(strip=True)
 
-                # div 순서로 시간대 결정
-                time_slot = time_slots[idx] if idx < len(time_slots) else f'SLOT_{idx+1}'
+                # 1. 먼저 div 순서로 시간대 결정
+                if idx < len(time_slots):
+                    time_slot = time_slots[idx]
+                else:
+                    time_slot = f'SLOT_{idx+1}'
 
-                # 상태 결정
+                # 2. 상태 결정
                 status = None
                 if '예약확정' in text:
                     status = 'confirmed'
                 elif '오전' in text or '오후' in text:
                     status = 'available'
 
-                # 오전/오후로 time_slot 덮어쓰기
+                # 3. 오전/오후 체크해서 time_slot 덮어쓰기
                 if '오전' in text:
                     time_slot = 'L'
                 elif '오후' in text:
                     time_slot = 'D'
 
+                # 예약확정 또는 오전/오후인 경우만 저장
                 if status:
                     reservations.append({
                         'facility_number': facility_number,
@@ -225,19 +250,30 @@ class WeddingHallCrawler:
 
         return reservations
 
-    def get_wpnonce(self, page, facility_number: str) -> Optional[str]:
+    def get_wpnonce(self, facility_number: str) -> Optional[str]:
         """예식장 페이지에서 _wpnonce 값 추출"""
         url = f"{self.base_url}/facilities/{facility_number}"
-        try:
-            page.goto(url, wait_until="networkidle")
-            html = page.content()
-            nonce_match = re.search(r'_wpnonce=([a-z0-9]+)', html)
-            return nonce_match.group(1) if nonce_match else None
-        except Exception as e:
-            logger.error(f"wpnonce 가져오기 실패: {facility_number}, {e}")
+        soup = self.fetch_page(url)
+        if not soup:
             return None
 
-    def crawl_reservations(self, page, facility_numbers: List[str], year: int = 2026) -> List[Dict]:
+        # _wpnonce 값 찾기
+        nonce_match = re.search(r'_wpnonce=([a-z0-9]+)', str(soup))
+        if nonce_match:
+            return nonce_match.group(1)
+        return None
+
+    def fetch_reservations_for_month(self, facility_number: str, year: int, month: int, wpnonce: str) -> List[Dict]:
+        """특정 예식장의 특정 월 예약 정보 가져오기"""
+        url = f"{self.base_url}/facilities/{facility_number}?to={year}-{month}&_wpnonce={wpnonce}"
+
+        soup = self.fetch_page(url)
+        if not soup:
+            return []
+
+        return self.parse_calendar(soup, facility_number, year, month)
+
+    def crawl_reservations(self, facility_numbers: List[str], year: int = 2026) -> List[Dict]:
         """모든 예식장의 예약 정보 크롤링"""
         logger.info(f"예약 정보 크롤링 시작: {len(facility_numbers)}개 예식장, {year}년")
 
@@ -246,27 +282,23 @@ class WeddingHallCrawler:
         for facility_number in facility_numbers:
             logger.info(f"예식장 {facility_number} 크롤링 중...")
 
-            try:
-                wpnonce = self.get_wpnonce(page, facility_number)
-                if not wpnonce:
-                    logger.warning(f"예식장 {facility_number}: wpnonce를 가져올 수 없습니다")
-                    continue
+            # wpnonce 가져오기
+            wpnonce = self.get_wpnonce(facility_number)
+            if not wpnonce:
+                logger.warning(f"예식장 {facility_number}: wpnonce를 가져올 수 없습니다")
+                continue
 
-                for month in range(1, 13):
-                    logger.debug(f"  - {year}년 {month}월 크롤링...")
+            for month in range(1, 13):
+                logger.debug(f"  - {year}년 {month}월 크롤링...")
 
-                    url = f"{self.base_url}/facilities/{facility_number}?to={year}-{month}&_wpnonce={wpnonce}"
-                    page.goto(url, wait_until="networkidle")
-                    soup = self.get_soup(page)
-
-                    reservations = self.parse_calendar(soup, facility_number, year, month)
+                try:
+                    reservations = self.fetch_reservations_for_month(facility_number, year, month, wpnonce)
                     if reservations:
                         all_reservations.extend(reservations)
                         logger.debug(f"    {len(reservations)}건 발견")
-
-            except Exception as e:
-                logger.error(f"예식장 {facility_number} 크롤링 실패: {e}")
-                continue
+                except Exception as e:
+                    logger.error(f"예식장 {facility_number}, {year}-{month} 크롤링 실패: {e}")
+                    continue
 
         logger.info(f"예약 정보 크롤링 완료: 총 {len(all_reservations)}건")
         return all_reservations
@@ -276,46 +308,30 @@ class WeddingHallCrawler:
         logger.info("예식장 목록 크롤링 시작")
 
         try:
-            with sync_playwright() as p:
-                browser = p.chromium.launch(
-                    headless=True,
-                    args=["--disable-blink-features=AutomationControlled"]
-                )
-                context = browser.new_context(
-                    locale="ko-KR",
-                    timezone_id="Asia/Seoul",
-                    user_agent=(
-                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                        "AppleWebKit/537.36 (KHTML, like Gecko) "
-                        "Chrome/120.0.0.0 Safari/537.36"
-                    )
-                )
-                page = context.new_page()
+            # 모든 예식장 정보 가져오기
+            facilities = self.get_all_facilities()
+            logger.info(f"총 {len(facilities)}개 예식장 발견")
 
-                # 모든 예식장 정보 가져오기
-                facilities = self.get_all_facilities(page)
-                logger.info(f"총 {len(facilities)}개 예식장 발견")
+            if facilities:
+                # 결과 출력
+                for facility in facilities:
+                    print(f"ID: {facility['facility_number']}, "
+                          f"지역: {facility['district']}, "
+                          f"이름: {facility['facility_name']}, "
+                          f"타입: {facility['location_type']}, "
+                          f"인원: {facility['capacity']}, "
+                          f"가격: {facility['price']}")
 
-                if facilities:
-                    for facility in facilities:
-                        print(f"ID: {facility['facility_number']}, "
-                              f"지역: {facility['district']}, "
-                              f"이름: {facility['facility_name']}, "
-                              f"타입: {facility['location_type']}, "
-                              f"인원: {facility['capacity']}, "
-                              f"가격: {facility['price']}")
+                # 예약 정보 크롤링
+                logger.info("\n예약 정보 크롤링 시작")
+                facility_numbers = [f['facility_number'] for f in facilities]
+                reservations = self.crawl_reservations(facility_numbers)
 
-                    # 예약 정보 크롤링
-                    logger.info("\n예약 정보 크롤링 시작")
-                    facility_numbers = [f['facility_number'] for f in facilities]
-                    reservations = self.crawl_reservations(page, facility_numbers)
+                # JSON 파일로 저장
+                self.save_to_json(facilities, reservations)
 
-                    # JSON 파일로 저장
-                    self.save_to_json(facilities, reservations)
-                else:
-                    logger.warning("파싱된 데이터가 없습니다")
-
-                browser.close()
+            else:
+                logger.warning("파싱된 데이터가 없습니다")
 
         except Exception as e:
             logger.error(f"크롤링 중 에러 발생: {e}")
