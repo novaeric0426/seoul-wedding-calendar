@@ -31,7 +31,7 @@ jobs:
 
       - name: Run crawler
         run: |
-          python crawler/crawler.py
+          python crawler/wedding_hall_crawler.py
 
       - name: Commit updated data.json
         run: |
