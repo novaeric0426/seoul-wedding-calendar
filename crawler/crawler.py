@@ -234,9 +234,22 @@ class WeddingHallCrawler:
 
         return reservations
 
-    def fetch_reservations_for_month(self, facility_number: str, year: int, month: int) -> List[Dict]:
+    def get_wpnonce(self, facility_number: str) -> Optional[str]:
+        """예식장 페이지에서 _wpnonce 값 추출"""
+        url = f"{self.base_url}/facilities/{facility_number}"
+        soup = self.fetch_page(url)
+        if not soup:
+            return None
+
+        # _wpnonce 값 찾기
+        nonce_match = re.search(r'_wpnonce=([a-z0-9]+)', str(soup))
+        if nonce_match:
+            return nonce_match.group(1)
+        return None
+
+    def fetch_reservations_for_month(self, facility_number: str, year: int, month: int, wpnonce: str) -> List[Dict]:
         """특정 예식장의 특정 월 예약 정보 가져오기"""
-        url = f"{self.base_url}/facilities/{facility_number}?to={year}-{month}&_wpnonce=5767884a9b"
+        url = f"{self.base_url}/facilities/{facility_number}?to={year}-{month}&_wpnonce={wpnonce}"
 
         soup = self.fetch_page(url)
         if not soup:
@@ -253,11 +266,17 @@ class WeddingHallCrawler:
         for facility_number in facility_numbers:
             logger.info(f"예식장 {facility_number} 크롤링 중...")
 
+            # wpnonce 가져오기
+            wpnonce = self.get_wpnonce(facility_number)
+            if not wpnonce:
+                logger.warning(f"예식장 {facility_number}: wpnonce를 가져올 수 없습니다")
+                continue
+
             for month in range(1, 13):
                 logger.debug(f"  - {year}년 {month}월 크롤링...")
 
                 try:
-                    reservations = self.fetch_reservations_for_month(facility_number, year, month)
+                    reservations = self.fetch_reservations_for_month(facility_number, year, month, wpnonce)
                     if reservations:
                         all_reservations.extend(reservations)
                         logger.debug(f"    {len(reservations)}건 발견")
