@@ -30,9 +30,28 @@ class WeddingHallCrawler:
         self.base_url = "https://wedding.seoulwomen.or.kr"
         self.facilities_url = f"{self.base_url}/facilities"
         self.page: Optional[Page] = None
+        self.context = None
+        self.browser = None
+        self.request_count = 0
+
+    def refresh_page(self):
+        """페이지 객체 재생성 (메모리 누수 방지)"""
+        if self.page:
+            try:
+                self.page.close()
+            except:
+                pass
+        self.page = self.context.new_page()
+        self.request_count = 0
+        logger.info("페이지 새로고침 완료")
 
     def fetch_page(self, url: str, selector: str = None, retries: int = 3) -> Optional[BeautifulSoup]:
         """페이지를 가져와서 BeautifulSoup 객체로 반환"""
+        # 50회 요청마다 페이지 새로고침 (메모리 누수 방지)
+        self.request_count += 1
+        if self.request_count >= 50:
+            self.refresh_page()
+
         for attempt in range(retries):
             try:
                 self.page.goto(url, wait_until="domcontentloaded", timeout=30000)
@@ -53,6 +72,10 @@ class WeddingHallCrawler:
                 return BeautifulSoup(content, 'lxml')
             except Exception as e:
                 logger.warning(f"페이지 요청 실패 (시도 {attempt + 1}/{retries}): {url}, 에러: {e}")
+                # 페이지 객체 손상 시 새로고침
+                if "'dict' object" in str(e) or "Target closed" in str(e):
+                    logger.info("페이지 객체 손상 감지, 새로고침 시도...")
+                    self.refresh_page()
                 if attempt < retries - 1:
                     time.sleep(3)
                 else:
@@ -324,12 +347,12 @@ class WeddingHallCrawler:
 
         with sync_playwright() as p:
             # Chromium 브라우저 실행 (headless 모드)
-            browser = p.chromium.launch(headless=True)
-            context = browser.new_context(
+            self.browser = p.chromium.launch(headless=True)
+            self.context = self.browser.new_context(
                 user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
                 viewport={'width': 1920, 'height': 1080}
             )
-            self.page = context.new_page()
+            self.page = self.context.new_page()
 
             try:
                 # 모든 예식장 정보 가져오기
@@ -361,7 +384,7 @@ class WeddingHallCrawler:
                 logger.error(f"크롤링 중 에러 발생: {e}")
                 raise
             finally:
-                browser.close()
+                self.browser.close()
 
 
 if __name__ == "__main__":

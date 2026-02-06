@@ -2,8 +2,8 @@ name: Crawl and Update Data
 
 on:
   schedule:
-    # 매 15분마다
-    - cron: '*/15 * * * *'
+    # 매 1시간마다
+    - cron: '0 * * * *'
   workflow_dispatch:
 
 permissions:
