@@ -31,21 +31,30 @@ class WeddingHallCrawler:
         self.facilities_url = f"{self.base_url}/facilities"
         self.page: Optional[Page] = None
 
-    def fetch_page(self, url: str, retries: int = 3) -> Optional[BeautifulSoup]:
+    def fetch_page(self, url: str, selector: str = None, retries: int = 3) -> Optional[BeautifulSoup]:
         """페이지를 가져와서 BeautifulSoup 객체로 반환"""
         for attempt in range(retries):
             try:
-                self.page.goto(url, wait_until="domcontentloaded", timeout=60000)
-                # 콘텐츠가 로드될 때까지 대기 (더 긴 타임아웃)
-                self.page.wait_for_load_state("networkidle", timeout=30000)
+                self.page.goto(url, wait_until="domcontentloaded", timeout=30000)
+
+                # 특정 셀렉터가 지정되면 그것만 기다림 (빠른 실패)
+                if selector:
+                    try:
+                        self.page.wait_for_selector(selector, timeout=10000)
+                    except:
+                        logger.info(f"셀렉터를 찾을 수 없음: {selector}")
+                        return None
+                else:
+                    # 기본: body만 기다림
+                    self.page.wait_for_selector('body', timeout=10000)
+
                 content = self.page.content()
-                # 요청 간 딜레이 (rate limiting 방지)
                 time.sleep(1)
                 return BeautifulSoup(content, 'lxml')
             except Exception as e:
                 logger.warning(f"페이지 요청 실패 (시도 {attempt + 1}/{retries}): {url}, 에러: {e}")
                 if attempt < retries - 1:
-                    time.sleep(3)  # 재시도 전 대기
+                    time.sleep(3)
                 else:
                     logger.error(f"페이지 요청 최종 실패: {url}")
                     return None
@@ -134,10 +143,11 @@ class WeddingHallCrawler:
                 url = f"{self.facilities_url}/page/{page}"
             logger.info(f"페이지 {page} 크롤링 중... ({url})")
 
-            soup = self.fetch_page(url)
+            # 예식장 목록 컨테이너가 있는지 확인하며 로드
+            soup = self.fetch_page(url, selector='ul.archive_list-container.facilities')
             if not soup:
-                logger.warning(f"페이지 {page} 가져오기 실패")
-                continue
+                logger.info(f"페이지 {page}에 데이터가 없어 페이지네이션 종료")
+                break
 
             facilities = self.parse_facilities(soup)
             if not facilities:
