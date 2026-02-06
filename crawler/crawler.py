@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import json
 import logging
 import re
+import time
 from datetime import datetime
 from typing import List, Dict, Optional
 from pathlib import Path
@@ -30,17 +31,24 @@ class WeddingHallCrawler:
         self.facilities_url = f"{self.base_url}/facilities"
         self.page: Optional[Page] = None
 
-    def fetch_page(self, url: str) -> Optional[BeautifulSoup]:
+    def fetch_page(self, url: str, retries: int = 3) -> Optional[BeautifulSoup]:
         """페이지를 가져와서 BeautifulSoup 객체로 반환"""
-        try:
-            self.page.goto(url, wait_until="networkidle", timeout=30000)
-            # 콘텐츠가 로드될 때까지 대기
-            self.page.wait_for_selector('body', timeout=10000)
-            content = self.page.content()
-            return BeautifulSoup(content, 'lxml')
-        except Exception as e:
-            logger.error(f"페이지 요청 실패: {url}, 에러: {e}")
-            return None
+        for attempt in range(retries):
+            try:
+                self.page.goto(url, wait_until="domcontentloaded", timeout=60000)
+                # 콘텐츠가 로드될 때까지 대기 (더 긴 타임아웃)
+                self.page.wait_for_load_state("networkidle", timeout=30000)
+                content = self.page.content()
+                # 요청 간 딜레이 (rate limiting 방지)
+                time.sleep(1)
+                return BeautifulSoup(content, 'lxml')
+            except Exception as e:
+                logger.warning(f"페이지 요청 실패 (시도 {attempt + 1}/{retries}): {url}, 에러: {e}")
+                if attempt < retries - 1:
+                    time.sleep(3)  # 재시도 전 대기
+                else:
+                    logger.error(f"페이지 요청 최종 실패: {url}")
+                    return None
 
     def parse_facilities(self, soup: BeautifulSoup) -> List[Dict]:
         """예식장 목록 파싱"""
@@ -146,6 +154,11 @@ class WeddingHallCrawler:
                     new_count += 1
 
             logger.info(f"페이지 {page}: {new_count}개 발견")
+
+            # 새로운 데이터가 없으면 더 이상 페이지가 없는 것
+            if new_count == 0:
+                logger.info("더 이상 새로운 데이터가 없어 페이지네이션 종료")
+                break
 
         return all_facilities
 
