@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import requests
+from playwright.sync_api import sync_playwright, Page
 from bs4 import BeautifulSoup
 import json
 import logging
@@ -15,7 +15,6 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('crawler.log'),
         logging.StreamHandler()
     ]
 )
@@ -27,26 +26,19 @@ class WeddingHallCrawler:
 
     def __init__(self, json_path: str = "../frontend/public/data.json"):
         self.json_path = Path(json_path)
-        self.session = requests.Session()
-        self.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Connection': 'keep-alive',
-            'Upgrade-Insecure-Requests': '1',
-        })
-
         self.base_url = "https://wedding.seoulwomen.or.kr"
         self.facilities_url = f"{self.base_url}/facilities"
+        self.page: Optional[Page] = None
 
     def fetch_page(self, url: str) -> Optional[BeautifulSoup]:
         """페이지를 가져와서 BeautifulSoup 객체로 반환"""
         try:
-            response = self.session.get(url, timeout=10)
-            response.raise_for_status()
-            return BeautifulSoup(response.content, 'lxml')
-        except requests.RequestException as e:
+            self.page.goto(url, wait_until="networkidle", timeout=30000)
+            # 콘텐츠가 로드될 때까지 대기
+            self.page.wait_for_selector('body', timeout=10000)
+            content = self.page.content()
+            return BeautifulSoup(content, 'lxml')
+        except Exception as e:
             logger.error(f"페이지 요청 실패: {url}, 에러: {e}")
             return None
 
@@ -307,35 +299,46 @@ class WeddingHallCrawler:
         """크롤링 실행"""
         logger.info("예식장 목록 크롤링 시작")
 
-        try:
-            # 모든 예식장 정보 가져오기
-            facilities = self.get_all_facilities()
-            logger.info(f"총 {len(facilities)}개 예식장 발견")
+        with sync_playwright() as p:
+            # Chromium 브라우저 실행 (headless 모드)
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context(
+                user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                viewport={'width': 1920, 'height': 1080}
+            )
+            self.page = context.new_page()
 
-            if facilities:
-                # 결과 출력
-                for facility in facilities:
-                    print(f"ID: {facility['facility_number']}, "
-                          f"지역: {facility['district']}, "
-                          f"이름: {facility['facility_name']}, "
-                          f"타입: {facility['location_type']}, "
-                          f"인원: {facility['capacity']}, "
-                          f"가격: {facility['price']}")
+            try:
+                # 모든 예식장 정보 가져오기
+                facilities = self.get_all_facilities()
+                logger.info(f"총 {len(facilities)}개 예식장 발견")
 
-                # 예약 정보 크롤링
-                logger.info("\n예약 정보 크롤링 시작")
-                facility_numbers = [f['facility_number'] for f in facilities]
-                reservations = self.crawl_reservations(facility_numbers)
+                if facilities:
+                    # 결과 출력
+                    for facility in facilities:
+                        print(f"ID: {facility['facility_number']}, "
+                              f"지역: {facility['district']}, "
+                              f"이름: {facility['facility_name']}, "
+                              f"타입: {facility['location_type']}, "
+                              f"인원: {facility['capacity']}, "
+                              f"가격: {facility['price']}")
 
-                # JSON 파일로 저장
-                self.save_to_json(facilities, reservations)
+                    # 예약 정보 크롤링
+                    logger.info("\n예약 정보 크롤링 시작")
+                    facility_numbers = [f['facility_number'] for f in facilities]
+                    reservations = self.crawl_reservations(facility_numbers)
 
-            else:
-                logger.warning("파싱된 데이터가 없습니다")
+                    # JSON 파일로 저장
+                    self.save_to_json(facilities, reservations)
 
-        except Exception as e:
-            logger.error(f"크롤링 중 에러 발생: {e}")
-            raise
+                else:
+                    logger.warning("파싱된 데이터가 없습니다")
+
+            except Exception as e:
+                logger.error(f"크롤링 중 에러 발생: {e}")
+                raise
+            finally:
+                browser.close()
 
 
 if __name__ == "__main__":
