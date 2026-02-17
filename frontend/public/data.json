@@ -1,5 +1,5 @@
 {
-  "lastCrawledAt": "2026-02-17T00:57:31.536864",
+  "lastCrawledAt": "2026-02-17T02:05:32.214274",
   "facilities": [
     {
       "facility_number": "4187",
@@ -1827,6 +1827,906 @@
     {
       "facility_number": "3216",
       "reservation_date": "2026-12-28",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-04-04",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-04-12",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-04-19",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-04-26",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-05-02",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-05-10",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-05-17",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-05-24",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-05-31",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-06-14",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-06-21",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-06-28",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-09-05",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-09-13",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-09-20",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-10-11",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-10-18",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "540",
+      "reservation_date": "2026-10-25",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-03-08",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-03-08",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-03-22",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-04-05",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-04-05",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-04-26",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-04-26",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-05-03",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-05-03",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-05-17",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-05-17",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-06-07",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-06-07",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-06-21",
+      "time_slot": "L",
+      "status": "available"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-06-21",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-07-05",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-07-05",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-07-19",
+      "time_slot": "L",
+      "status": "available"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-07-19",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-08-02",
+      "time_slot": "L",
+      "status": "available"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-08-02",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-08-16",
+      "time_slot": "L",
+      "status": "available"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-08-16",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-08-30",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-08-30",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-09-06",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-09-06",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-09-20",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-09-20",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-10-04",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-10-04",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-10-18",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-10-18",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-11-08",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-11-08",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-11-22",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-11-22",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-12-06",
+      "time_slot": "L",
+      "status": "available"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-12-06",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-12-20",
+      "time_slot": "L",
+      "status": "available"
+    },
+    {
+      "facility_number": "436",
+      "reservation_date": "2026-12-20",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-04-04",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-04-05",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-04-11",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-04-12",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-04-18",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-04-18",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-04-19",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-04-19",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-04-25",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-04-25",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-04-26",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-02",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-02",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-03",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-03",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-09",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-09",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-10",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-10",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-16",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-16",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-17",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-17",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-23",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-23",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-24",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-24",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-30",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-30",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-31",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-05-31",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-06",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-06",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-07",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-07",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-13",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-13",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-14",
+      "time_slot": "L",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-14",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-20",
+      "time_slot": "L",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-20",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-21",
+      "time_slot": "L",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-21",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-27",
+      "time_slot": "L",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-27",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-28",
+      "time_slot": "L",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-06-28",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-05",
+      "time_slot": "L",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-05",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-06",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-06",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-12",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-12",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-13",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-13",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-19",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-19",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-20",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-20",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-26",
+      "time_slot": "L",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-26",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-27",
+      "time_slot": "L",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-09-27",
+      "time_slot": "D",
+      "status": "available"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-03",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-03",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-04",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-04",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-10",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-10",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-11",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-11",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-17",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-17",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-18",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-18",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-24",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-24",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-25",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-25",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-31",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-10-31",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-11-01",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-11-01",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-11-07",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-11-07",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-11-08",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-11-08",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-11-14",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-11-14",
+      "time_slot": "D",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-11-15",
+      "time_slot": "L",
+      "status": "confirmed"
+    },
+    {
+      "facility_number": "486",
+      "reservation_date": "2026-11-15",
       "time_slot": "D",
       "status": "available"
     }
