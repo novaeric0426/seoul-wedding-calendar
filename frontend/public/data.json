@@ -1,5 +1,5 @@
 {
-  "lastCrawledAt": "2026-02-23T05:09:34.028639",
+  "lastCrawledAt": "2026-02-23T05:59:09.273414",
   "facilities": [
     {
       "facility_number": "4187",
@@ -14038,7 +14038,7 @@
       "facility_number": "395",
       "reservation_date": "2026-11-08",
       "time_slot": "L",
-      "status": "available"
+      "status": "confirmed"
     },
     {
       "facility_number": "395",
