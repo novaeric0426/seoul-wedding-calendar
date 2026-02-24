@@ -1,5 +1,5 @@
 {
-  "lastCrawledAt": "2026-02-24T05:09:42.759722",
+  "lastCrawledAt": "2026-02-24T06:55:24.390372",
   "facilities": [
     {
       "facility_number": "4187",
@@ -4208,25 +4208,25 @@
     },
     {
       "facility_number": "3197",
-      "reservation_date": "2026-10-04",
+      "reservation_date": "2026-10-11",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3197",
-      "reservation_date": "2026-10-04",
+      "reservation_date": "2026-10-11",
       "time_slot": "D",
       "status": "available"
     },
     {
       "facility_number": "3197",
-      "reservation_date": "2026-10-18",
+      "reservation_date": "2026-10-25",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3197",
-      "reservation_date": "2026-10-18",
+      "reservation_date": "2026-10-25",
       "time_slot": "D",
       "status": "available"
     },
@@ -4256,25 +4256,25 @@
     },
     {
       "facility_number": "3197",
-      "reservation_date": "2026-12-06",
+      "reservation_date": "2026-12-13",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3197",
-      "reservation_date": "2026-12-06",
+      "reservation_date": "2026-12-13",
       "time_slot": "D",
       "status": "available"
     },
     {
       "facility_number": "3197",
-      "reservation_date": "2026-12-20",
+      "reservation_date": "2026-12-27",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3197",
-      "reservation_date": "2026-12-20",
+      "reservation_date": "2026-12-27",
       "time_slot": "D",
       "status": "available"
     },
@@ -4286,25 +4286,25 @@
     },
     {
       "facility_number": "3196",
-      "reservation_date": "2026-10-04",
+      "reservation_date": "2026-10-11",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3196",
-      "reservation_date": "2026-10-04",
+      "reservation_date": "2026-10-11",
       "time_slot": "D",
       "status": "available"
     },
     {
       "facility_number": "3196",
-      "reservation_date": "2026-10-18",
+      "reservation_date": "2026-10-25",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3196",
-      "reservation_date": "2026-10-18",
+      "reservation_date": "2026-10-25",
       "time_slot": "D",
       "status": "available"
     },
@@ -4334,49 +4334,49 @@
     },
     {
       "facility_number": "3196",
-      "reservation_date": "2026-12-06",
+      "reservation_date": "2026-12-13",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3196",
-      "reservation_date": "2026-12-06",
+      "reservation_date": "2026-12-13",
       "time_slot": "D",
       "status": "available"
     },
     {
       "facility_number": "3196",
-      "reservation_date": "2026-12-20",
+      "reservation_date": "2026-12-27",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3196",
-      "reservation_date": "2026-12-20",
+      "reservation_date": "2026-12-27",
       "time_slot": "D",
       "status": "available"
     },
     {
       "facility_number": "3195",
-      "reservation_date": "2026-10-04",
+      "reservation_date": "2026-10-11",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3195",
-      "reservation_date": "2026-10-04",
+      "reservation_date": "2026-10-11",
       "time_slot": "D",
       "status": "available"
     },
     {
       "facility_number": "3195",
-      "reservation_date": "2026-10-18",
+      "reservation_date": "2026-10-25",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3195",
-      "reservation_date": "2026-10-18",
+      "reservation_date": "2026-10-25",
       "time_slot": "D",
       "status": "available"
     },
@@ -4406,49 +4406,49 @@
     },
     {
       "facility_number": "3195",
-      "reservation_date": "2026-12-06",
+      "reservation_date": "2026-12-13",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3195",
-      "reservation_date": "2026-12-06",
+      "reservation_date": "2026-12-13",
       "time_slot": "D",
       "status": "available"
     },
     {
       "facility_number": "3195",
-      "reservation_date": "2026-12-20",
+      "reservation_date": "2026-12-27",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3195",
-      "reservation_date": "2026-12-20",
+      "reservation_date": "2026-12-27",
       "time_slot": "D",
       "status": "available"
     },
     {
       "facility_number": "3194",
-      "reservation_date": "2026-10-04",
+      "reservation_date": "2026-10-11",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3194",
-      "reservation_date": "2026-10-04",
+      "reservation_date": "2026-10-11",
       "time_slot": "D",
       "status": "available"
     },
     {
       "facility_number": "3194",
-      "reservation_date": "2026-10-18",
+      "reservation_date": "2026-10-25",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3194",
-      "reservation_date": "2026-10-18",
+      "reservation_date": "2026-10-25",
       "time_slot": "D",
       "status": "available"
     },
@@ -4478,25 +4478,25 @@
     },
     {
       "facility_number": "3194",
-      "reservation_date": "2026-12-06",
+      "reservation_date": "2026-12-13",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3194",
-      "reservation_date": "2026-12-06",
+      "reservation_date": "2026-12-13",
       "time_slot": "D",
       "status": "available"
     },
     {
       "facility_number": "3194",
-      "reservation_date": "2026-12-20",
+      "reservation_date": "2026-12-27",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3194",
-      "reservation_date": "2026-12-20",
+      "reservation_date": "2026-12-27",
       "time_slot": "D",
       "status": "available"
     },
@@ -4928,25 +4928,25 @@
     },
     {
       "facility_number": "3193",
-      "reservation_date": "2026-10-04",
+      "reservation_date": "2026-10-11",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3193",
-      "reservation_date": "2026-10-04",
+      "reservation_date": "2026-10-11",
       "time_slot": "D",
       "status": "available"
     },
     {
       "facility_number": "3193",
-      "reservation_date": "2026-10-18",
+      "reservation_date": "2026-10-25",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3193",
-      "reservation_date": "2026-10-18",
+      "reservation_date": "2026-10-25",
       "time_slot": "D",
       "status": "available"
     },
@@ -4976,25 +4976,25 @@
     },
     {
       "facility_number": "3193",
-      "reservation_date": "2026-12-06",
+      "reservation_date": "2026-12-13",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3193",
-      "reservation_date": "2026-12-06",
+      "reservation_date": "2026-12-13",
       "time_slot": "D",
       "status": "available"
     },
     {
       "facility_number": "3193",
-      "reservation_date": "2026-12-20",
+      "reservation_date": "2026-12-27",
       "time_slot": "L",
       "status": "available"
     },
     {
       "facility_number": "3193",
-      "reservation_date": "2026-12-20",
+      "reservation_date": "2026-12-27",
       "time_slot": "D",
       "status": "available"
     },
