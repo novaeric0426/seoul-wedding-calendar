@@ -1,6 +1,15 @@
 {
-  "lastCrawledAt": "2026-02-27T08:40:38.207909",
+  "lastCrawledAt": "2026-02-27T09:42:06.795209",
   "facilities": [
+    {
+      "facility_number": "6411",
+      "district": "성동구",
+      "facility_name": "서울숲 포플러정원",
+      "location_type": "야외(공원)",
+      "capacity": "150명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/6411"
+    },
     {
       "facility_number": "4187",
       "district": "용산구",
