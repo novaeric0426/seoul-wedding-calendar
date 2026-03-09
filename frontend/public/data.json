@@ -1,5 +1,5 @@
 {
-  "lastCrawledAt": "2026-03-09T01:39:28.304310",
+  "lastCrawledAt": "2026-03-09T03:06:56.998704",
   "facilities": [
     {
       "facility_number": "6411",
@@ -51,7 +51,7 @@
       "district": "용산구",
       "facility_name": "남산 한남 웨딩가든(前 더힐스 남산 웨딩홀, 한남 정원 웨딩홀)",
       "location_type": "야외(라운지)",
-      "capacity": "100명",
+      "capacity": "150명",
       "price": "무료",
       "url": "https://wedding.seoulwomen.or.kr/facilities/3191"
     },
@@ -519,7 +519,7 @@
       "district": "서초구",
       "facility_name": "매헌시민의숲",
       "location_type": "야외(공원)",
-      "capacity": "120명",
+      "capacity": "150명",
       "price": "무료",
       "url": "https://wedding.seoulwomen.or.kr/facilities/637"
     },
