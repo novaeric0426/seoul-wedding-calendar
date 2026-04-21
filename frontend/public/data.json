@@ -1,5 +1,5 @@
 {
-  "lastCrawledAt": "2026-04-21T11:29:39.256933",
+  "lastCrawledAt": "2026-04-21T12:29:02.995477",
   "facilities": [
     {
       "facility_number": "6411",
@@ -324,6 +324,267 @@
       "capacity": "400명",
       "price": "무료",
       "url": "https://wedding.seoulwomen.or.kr/facilities/3217"
+    },
+    {
+      "facility_number": "3222",
+      "district": "도봉구",
+      "facility_name": "초안산 가드닝센터",
+      "location_type": "실내",
+      "capacity": "50명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/3222"
+    },
+    {
+      "facility_number": "3213",
+      "district": "은평구",
+      "facility_name": "서울문화예술교육센터(은평)",
+      "location_type": "실내",
+      "capacity": "210명",
+      "price": "(오전)900천원, (오후)1,800천원",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/3213"
+    },
+    {
+      "facility_number": "3214",
+      "district": "강서구",
+      "facility_name": "어울림플라자 공연장",
+      "location_type": "실내",
+      "capacity": "140명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/3214"
+    },
+    {
+      "facility_number": "3185",
+      "district": "중구",
+      "facility_name": "서울창조산업허브 오페라홀",
+      "location_type": "실내",
+      "capacity": "100명",
+      "price": "남산자락에 위치한 창조산업 허브 내 오페라홀을 웨딩홀 복합공간으로 운영",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/3185"
+    },
+    {
+      "facility_number": "3186",
+      "district": "서초구",
+      "facility_name": "반포 덮개공원 내 복합웨딩홀(실내+야외)",
+      "location_type": "실내",
+      "capacity": "0명",
+      "price": "반포 주공 1단지 재건축 덮개공원 활용 복합 웨딩홀 및 복지공간을 웨딩홀로 조성",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/3186"
+    },
+    {
+      "facility_number": "3219",
+      "district": "용산구",
+      "facility_name": "용산아트홀 전시장",
+      "location_type": "실내",
+      "capacity": "100명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/3219"
+    },
+    {
+      "facility_number": "3218",
+      "district": "광진구",
+      "facility_name": "광진구청 대강당홀",
+      "location_type": "실내",
+      "capacity": "200명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/3218"
+    },
+    {
+      "facility_number": "1519",
+      "district": "은평구",
+      "facility_name": "은평역사한옥박물관(은평마당)",
+      "location_type": "야외(라운지)",
+      "capacity": "150명",
+      "price": "77,000원\n                                 (4시간)",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/1519"
+    },
+    {
+      "facility_number": "395",
+      "district": "영등포구",
+      "facility_name": "선유도공원(원형무대)",
+      "location_type": "야외(공원)",
+      "capacity": "200명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/395"
+    },
+    {
+      "facility_number": "125",
+      "district": "강북구",
+      "facility_name": "북서울 꿈의숲(창녕위궁재사)",
+      "location_type": "야외(공원)",
+      "capacity": "200명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/125"
+    },
+    {
+      "facility_number": "540",
+      "district": "성북구",
+      "facility_name": "성북 예향재",
+      "location_type": "야외(한옥)",
+      "capacity": "150명",
+      "price": "500,000원",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/540"
+    },
+    {
+      "facility_number": "436",
+      "district": "동대문구",
+      "facility_name": "서울한방진흥센터(야외마당)전통예식 특화장소",
+      "location_type": "야외(한옥)",
+      "capacity": "200명",
+      "price": "피로연 진행 시 다목적홀 대관료(360,000원) 별도부과",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/436"
+    },
+    {
+      "facility_number": "486",
+      "district": "동대문구",
+      "facility_name": "서울시립대 자작마루",
+      "location_type": "야외(청사)",
+      "capacity": "200명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/486"
+    },
+    {
+      "facility_number": "588",
+      "district": "마포구",
+      "facility_name": "문화비축기지",
+      "location_type": "야외(공원)",
+      "capacity": "200명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/588"
+    },
+    {
+      "facility_number": "758",
+      "district": "강서구",
+      "facility_name": "마곡광장(썬큰마당)",
+      "location_type": "야외(공원)",
+      "capacity": "200명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/758"
+    },
+    {
+      "facility_number": "761",
+      "district": "노원구",
+      "facility_name": "불암산 힐링타운 철쭉동산",
+      "location_type": "야외(공원)",
+      "capacity": "100명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/761"
+    },
+    {
+      "facility_number": "593",
+      "district": "성동구",
+      "facility_name": "서울새활용플라자",
+      "location_type": "야외(청사)",
+      "capacity": "120명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/593"
+    },
+    {
+      "facility_number": "407",
+      "district": "노원구",
+      "facility_name": "북서울미술관(썬큰가든, 별광장)",
+      "location_type": "야외(라운지)",
+      "capacity": "50명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/407"
+    },
+    {
+      "facility_number": "487",
+      "district": "서초구",
+      "facility_name": "서울시 인재개발원(인재홀)",
+      "location_type": "실내",
+      "capacity": "200명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/487"
+    },
+    {
+      "facility_number": "753",
+      "district": "종로구",
+      "facility_name": "세종문화회관(예인마당)",
+      "location_type": "야외(공원)",
+      "capacity": "100명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/753"
+    },
+    {
+      "facility_number": "474",
+      "district": "동작구",
+      "facility_name": "보라매시민안전체험관(다목적홀)",
+      "location_type": "실내",
+      "capacity": "50명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/474"
+    },
+    {
+      "facility_number": "637",
+      "district": "서초구",
+      "facility_name": "매헌시민의숲",
+      "location_type": "야외(공원)",
+      "capacity": "150명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/637"
+    },
+    {
+      "facility_number": "549",
+      "district": "강동구",
+      "facility_name": "한강공원 광나루 장미원",
+      "location_type": "야외(공원)",
+      "capacity": "150명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/549"
+    },
+    {
+      "facility_number": "527",
+      "district": "영등포구",
+      "facility_name": "여의도 한강공원 물빛무대",
+      "location_type": "야외(공원)",
+      "capacity": "100명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/527"
+    },
+    {
+      "facility_number": "760",
+      "district": "도봉구",
+      "facility_name": "초안산 하늘꽃정원",
+      "location_type": "야외(공원)",
+      "capacity": "100명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/760"
+    },
+    {
+      "facility_number": "754",
+      "district": "강북구",
+      "facility_name": "솔밭근린공원",
+      "location_type": "야외(공원)",
+      "capacity": "100명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/754"
+    },
+    {
+      "facility_number": "372",
+      "district": "강남구",
+      "facility_name": "SETEC 컨벤션홀",
+      "location_type": "실내",
+      "capacity": "200명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/372"
+    },
+    {
+      "facility_number": "3504",
+      "district": "관악구",
+      "facility_name": "관악문화예절원",
+      "location_type": "야외(한옥)",
+      "capacity": "0명",
+      "price": "자체문의",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/3504"
+    },
+    {
+      "facility_number": "3484",
+      "district": "중구",
+      "facility_name": "남산골한옥마을 (관훈동 민씨 가옥)",
+      "location_type": "야외(한옥)",
+      "capacity": "0명",
+      "price": "자체문의",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/3484"
     }
   ],
   "reservations": []
