@@ -1,5 +1,5 @@
 {
-  "lastCrawledAt": "2026-06-30T03:13:22.549592",
+  "lastCrawledAt": "2026-06-30T05:28:58.942017",
   "facilities": [
     {
       "facility_number": "8120",
@@ -182,6 +182,15 @@
       "url": "https://wedding.seoulwomen.or.kr/facilities/3210"
     },
     {
+      "facility_number": "520",
+      "district": "동작구",
+      "facility_name": "서울여성플라자 피움서울(舊.국제회의장)",
+      "location_type": "실내",
+      "capacity": "150명",
+      "price": "무료",
+      "url": "https://wedding.seoulwomen.or.kr/facilities/520"
+    },
+    {
       "facility_number": "3209",
       "district": "강서구",
       "facility_name": "서울식물원 사색의 정원",
@@ -252,15 +261,6 @@
       "capacity": "150명",
       "price": "무료",
       "url": "https://wedding.seoulwomen.or.kr/facilities/3200"
-    },
-    {
-      "facility_number": "520",
-      "district": "동작구",
-      "facility_name": "서울여성플라자 피움서울(舊.국제회의장)",
-      "location_type": "실내",
-      "capacity": "150명",
-      "price": "무료",
-      "url": "https://wedding.seoulwomen.or.kr/facilities/520"
     },
     {
       "facility_number": "3188",
